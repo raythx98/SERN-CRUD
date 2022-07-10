@@ -25,6 +25,22 @@
   padding-top: 10%;
 }
 
+.newlink label {
+  font-size: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  padding-top: 5%;
+}
+
+.newlink p {
+  font-size: 18px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.error {
+  color: red;
+  padding-top: 5px;
+}
+
 .information button {
   width: 20%;
   height: 30px;
