@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
 const mysql = require('mysql');
 const db = mysql.createConnection({
@@ -9,6 +10,8 @@ const db = mysql.createConnection({
     database: 'linksystem',
 })
 
+app.use(cors());
+app.use(express.json());
 let j = 1;
 
 app.post('/getlink', (req, res) => {
