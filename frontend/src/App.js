@@ -8,6 +8,7 @@ function App() {
   const [linkError, setLinkError] = useState("");
   const [newLink, setNewLink] = useState("");
   const [visible, setVisible] = useState(true);
+  const base_url = "https://urls.raythx.com/";
 
   const displayInfo = () => {
     console.log(link);
@@ -48,7 +49,7 @@ function App() {
       {visible ? null : (
         <div className="newlink information">
           <label>Your shortened link is: </label>
-          <p>{newLink}</p>
+          <p>{base_url}{newLink}</p>
         </div>
       )}
     </div>
