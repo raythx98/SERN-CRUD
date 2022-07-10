@@ -1,10 +1,11 @@
 import "./App.css";
 import { useState } from "react";
 import Axios from "axios";
+import validator from 'validator'
 
 function App() {
   const [link, setLink] = useState("");
-  const [linkError, setLinkError] = useState("Error");
+  const [linkError, setLinkError] = useState("");
   const [newLink, setNewLink] = useState("");
   const [visible, setVisible] = useState(true);
 
@@ -17,6 +18,10 @@ function App() {
     setVisible(true);
     if (link.length < 1) {
       setLinkError("Input link should not be empty");
+      return;
+    }
+    if (!validator.isURL(link)) {
+      setLinkError("Invalid URL");
       return;
     }
     setVisible(false);
