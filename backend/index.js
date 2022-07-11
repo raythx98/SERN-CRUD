@@ -34,13 +34,13 @@ app.post('/getlink', (req, res) => {
 })
 
 app.get('/:shortUrl', (req, res) => {
-    
     db.query("SELECT link FROM links WHERE shortened_link = (?) LIMIT 1",
     [req.params.shortUrl], (err, result) => {
         if (err) {
             console.log(err);
         } else {
             if (result && result.length > 0) {
+                console.log("//"+result[0].link);
                 return res.redirect("//"+result[0].link);
             } else {
                 return res.status(404).json('No url found');
