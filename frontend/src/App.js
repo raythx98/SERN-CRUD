@@ -8,7 +8,7 @@ function App() {
   const [linkError, setLinkError] = useState("");
   const [newLink, setNewLink] = useState("");
   const [visible, setVisible] = useState(true);
-  const base_url = "localhost:3001/";
+  const base_url = "13.214.84.223:3001/";
 
   const displayInfo = () => {
     console.log(link);
