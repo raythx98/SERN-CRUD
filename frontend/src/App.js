@@ -11,7 +11,8 @@ function App() {
   const [linkError, setLinkError] = useState("");
   const [newLink, setNewLink] = useState("");
   const [visible, setVisible] = useState(true);
-  const base_url = "13.214.84.223:3001/";
+  const base_url = "url.raythx.com/";
+  const api_url = "localhost:3001/";
 
   const displayInfo = () => {
     console.log(link);
@@ -30,7 +31,7 @@ function App() {
     }
     setVisible(false);
     console.log(link);
-    Axios.post("//" + base_url + "getlink", { link: link }).then((res) => {
+    Axios.post("//" + api_url + "getlink", { link: link }).then((res) => {
       console.log(res);
       setNewLink(res.data);
     });
@@ -65,8 +66,13 @@ function App() {
           <p>
             <ContentCopyIcon
               onClick={() => {
-                navigator.clipboard.writeText(base_url+newLink);
-                alert("Copied to Clipboard!");
+                if ('clipboard' in navigator) {
+                  navigator.clipboard.writeText(base_url+newLink);
+                  console.log("copied to clipboard API");
+                  alert("Copied to Clipboard!");
+                } else {
+                  console.log("unable to use clipboard");
+                }
               }}
               style={{justifyItems:"center"}}
             ></ContentCopyIcon>
