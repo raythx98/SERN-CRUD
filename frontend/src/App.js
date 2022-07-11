@@ -1,7 +1,10 @@
 import "./App.css";
 import { useState } from "react";
+import { Button, TextField } from "@mui/material";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import "@fontsource/roboto";
 import Axios from "axios";
-import validator from 'validator'
+import validator from "validator";
 
 function App() {
   const [link, setLink] = useState("");
@@ -27,31 +30,53 @@ function App() {
     }
     setVisible(false);
     console.log(link);
-    Axios.post("//"+base_url+"getlink", { link: link }).then((res) => {
+    Axios.post("//" + base_url + "getlink", { link: link }).then((res) => {
       console.log(res);
-      setNewLink(res.data)    
+      setNewLink(res.data);
     });
   };
 
   return (
     <div className="App">
       <div className="information">
-        <label>Input Link:</label>
-        <input
-          type="link"
+        <label></label>
+        <TextField
+          className="textfield"
+          id="filled-basic"
+          placeholder="Input Link"
+          variant="filled"
+          style={{ fontSize: "20px" }}
           onChange={(event) => {
             setLink(event.target.value);
           }}
         />
         <div className="error">{linkError}</div>
-        <button onClick={addLink}>Shorten URL</button>
+        <Button
+          onClick={addLink}
+          variant="outlined"
+          style={{ fontSize: "18px" }}
+        >
+          Shorten URL
+        </Button>
       </div>
       {visible ? null : (
         <div className="newlink information">
           <label>Your shortened link is: </label>
           <p>
-            <a href={"//"+base_url+newLink} target="_blank" rel="noopener noreferrer">
-              {base_url}{newLink}
+            <ContentCopyIcon
+              onClick={() => {
+                navigator.clipboard.writeText(base_url+newLink);
+                alert("Copied to Clipboard!");
+              }}
+              style={{justifyItems:"center"}}
+            ></ContentCopyIcon>
+            &nbsp;<a
+              href={"//" + base_url + newLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {base_url}
+              {newLink}
             </a>
           </p>
         </div>
