@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: "Roboto";
 }
 
 .information {
@@ -10,30 +11,41 @@
   align-items: center;
 }
 
-.information input {
-  width: 50%;
-  height: 30px;
+.textfield {
+  max-width: 800px;
+  width: 70%;
   font-size: 20px;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.css-10botns-MuiInputBase-input-MuiFilledInput-input {
+  padding-top: 10px  !important ;
+  font-size: 20px !important;
+}
+
+.error {
   margin-top: 5px;
 }
 
 .information label {
   font-size: 20px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   padding-top: 10%;
 }
 
 .newlink label {
   font-size: 20px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   padding-top: 5%;
 }
 
 .newlink p {
   font-size: 18px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  overflow-wrap: anywhere;
+}
+
+.newlink a {
+  font-size: 18px;
+  overflow-wrap: anywhere;
 }
 
 .error {
@@ -43,8 +55,10 @@
 
 .information button {
   width: 20%;
-  height: 30px;
-  margin-top: 15px;
+  min-height: fit-content;
+  min-width: fit-content;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .information button:hover {
