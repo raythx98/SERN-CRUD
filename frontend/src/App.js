@@ -12,7 +12,7 @@ function App() {
   const [newLink, setNewLink] = useState("");
   const [visible, setVisible] = useState(true);
   const base_url = "url.raythx.com/";
-  const api_url = "127.0.0.1:3001/";
+  const api_url = "url.raythx.com/";
 
   const displayInfo = () => {
     console.log(link);
