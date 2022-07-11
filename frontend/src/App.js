@@ -12,7 +12,6 @@ function App() {
   const [newLink, setNewLink] = useState("");
   const [visible, setVisible] = useState(true);
   const base_url = "localhost:3001/";
-  const api_url = "localhost:3001/";
 
   const displayInfo = () => {
     console.log(link);
@@ -31,7 +30,7 @@ function App() {
     }
     setVisible(false);
     console.log(link);
-    Axios.post("//" + api_url + "getlink", { link: link }).then((res) => {
+    Axios.post("//" + base_url + "getlink", { link: link }).then((res) => {
       console.log(res);
       setNewLink(res.data);
     });
@@ -64,7 +63,7 @@ function App() {
         <div className="newlink information">
           <label>Your shortened link is: </label>
           <p>
-            <ContentCopyIcon
+            {/* <ContentCopyIcon
               onClick={() => {
                 if ('clipboard' in navigator) {
                   navigator.clipboard.writeText(base_url+newLink);
@@ -76,7 +75,8 @@ function App() {
               }}
               style={{justifyItems:"center"}}
             ></ContentCopyIcon>
-            &nbsp;<a
+            &nbsp; */}
+            <a
               href={"//" + base_url + newLink}
               target="_blank"
               rel="noopener noreferrer"
