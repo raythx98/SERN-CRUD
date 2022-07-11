@@ -9,6 +9,7 @@ import validator from "validator";
 function App() {
   const [link, setLink] = useState("");
   const [linkError, setLinkError] = useState("");
+  const [resError, setResError] = useState("");
   const [newLink, setNewLink] = useState("");
   const [visible, setVisible] = useState(true);
   const base_url = "url.raythx.com/";
@@ -19,6 +20,7 @@ function App() {
 
   const addLink = () => {
     setLinkError("");
+    setResError("");
     setVisible(true);
     if (link.length < 1) {
       setLinkError("Input link should not be empty");
@@ -30,10 +32,27 @@ function App() {
     }
     setVisible(false);
     console.log(link);
-    Axios.post("//" + base_url + "getlink", { link: link }).then((res) => {
+    
+    Axios.post("//" + base_url + "getlink", { link: link })
+    .then((res) => {
       console.log(res);
       setNewLink(res.data);
+    })
+    .catch(function (error) {
+      setResError(
+        "Server error, please contact hongxian@comp.nus.edu.sg for urgent attention..."
+      );
+      if (error.response) {
+        console.log("Response Error, data: ", error.response.data);
+        console.log("Response Error, header: ", error.response.headers);
+      } else if (error.request) {
+        console.log("Request Error: ", error.request);
+      } else {
+        console.log("Error ", error.message);
+      }
+      console.log(error.config);
     });
+    
   };
 
   return (
@@ -59,7 +78,9 @@ function App() {
           Shorten URL
         </Button>
       </div>
-      {visible ? null : (
+      {visible ? null : resError ? (
+        <div className="error information">{resError}</div>
+      ) : (
         <div className="newlink information">
           <label>Your shortened link is: </label>
           <p>
