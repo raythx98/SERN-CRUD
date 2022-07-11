@@ -8,7 +8,7 @@ function App() {
   const [linkError, setLinkError] = useState("");
   const [newLink, setNewLink] = useState("");
   const [visible, setVisible] = useState(true);
-  const base_url = "https://urls.raythx.com/";
+  const base_url = "localhost:3001/";
 
   const displayInfo = () => {
     console.log(link);
@@ -27,7 +27,7 @@ function App() {
     }
     setVisible(false);
     console.log(link);
-    Axios.post("http://localhost:3001/getlink", { link: link }).then((res) => {
+    Axios.post("//"+base_url+"getlink", { link: link }).then((res) => {
       console.log(res);
       setNewLink(res.data)    
     });
@@ -49,7 +49,11 @@ function App() {
       {visible ? null : (
         <div className="newlink information">
           <label>Your shortened link is: </label>
-          <p>{base_url}{newLink}</p>
+          <p>
+            <a href={"//"+base_url+newLink} target="_blank" rel="noopener noreferrer">
+              {base_url}{newLink}
+            </a>
+          </p>
         </div>
       )}
     </div>

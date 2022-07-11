@@ -5,6 +5,7 @@ const {nanoid} = require("nanoid");
 
 const mysql = require('mysql');
 const db = mysql.createConnection({
+    // SQL located on local, not much security issues
     user: 'root',
     host: 'localhost',
     password: 'password',
