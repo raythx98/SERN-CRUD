@@ -40,8 +40,8 @@ app.get('/:shortUrl', (req, res) => {
             console.log(err);
         } else {
             if (result && result.length > 0) {
-                console.log("//"+result[0].link);
-                return res.redirect("//"+result[0].link);
+                console.log(result[0].link);
+                return res.redirect(result[0].link);
             } else {
                 return res.status(404).json('No url found');
             }
