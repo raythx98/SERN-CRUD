@@ -19,7 +19,7 @@ app.use(express.json());
 app.post('/getlink', (req, res) => {
     const link = req.body.link;
 
-    const short_link = nanoid();
+    const short_link = nanoid(8);
     db.query(
         'INSERT INTO links (link, shortened_link) VALUES (?,?)', 
         [link, short_link], 
@@ -35,7 +35,7 @@ app.post('/getlink', (req, res) => {
 })
 
 app.get('/:shortUrl', (req, res) => {
-    db.query("SELECT link FROM links WHERE shortened_link = (?) LIMIT 1",
+    db.query("SELECT link FROM links WHERE shortened_link = (?) ORDER BY link_id DESC LIMIT 1",
     [req.params.shortUrl], (err, result) => {
         if (err) {
             console.log(err);
