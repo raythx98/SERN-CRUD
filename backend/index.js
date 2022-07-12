@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/getlink", linksRouter);
 app.use(redirectRouter);
-app.listen(port, ()=> {
+module.exports = app.listen(port, ()=> {
     console.log("Server running on port", port);
 });
 

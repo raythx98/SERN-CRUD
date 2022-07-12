@@ -4,8 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
+    "pretest": "cross-env NODE_ENV=test",
     "devStart": "nodemon index.js"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +26,9 @@
     "shortid": "^2.2.16"
   },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "cross-env": "^7.0.3",
+    "jest": "^28.1.2",
+    "nodemon": "^2.0.19",
+    "supertest": "^6.2.4"
   }
 }
