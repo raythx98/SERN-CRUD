@@ -1,6 +1,6 @@
 # Ray's URL Shortener
 
-Test my implementation of URL Shortener at [url.raythx.com](url.raythx.com) (no HTTPS/SSL yet)
+Test my implementation of URL Shortener at [http://url.raythx.com](http://url.raythx.com) (no HTTPS/SSL yet)
 
 ---
 
