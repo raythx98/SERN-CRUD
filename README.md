@@ -2,6 +2,8 @@
 
 Test my implementation of URL Shortener at [http://url.raythx.com](http://url.raythx.com) (no HTTPS/SSL yet)
 
+Server status: Deployed & Running
+
 ---
 
 ## Features
@@ -10,11 +12,20 @@ Test my implementation of URL Shortener at [http://url.raythx.com](http://url.ra
 - Deployed on AWS
 - Some [unit/integration testing](https://github.com/raythx98/SERN-CRUD/tree/main/backend/tests)
 
+---
+
+## Design Considerations
+- The short URL will be url.raythx.com/{8 digit string [0-9A-Za-z_-]}
+- shortened link space of 64 ^ 8 = 2.8147498e+14
+- In case of collision, the latest long URL will be used
+
+---
+
 ## If my server crashes
 
 In the unfortunate event that my server crashes during evaluation, the first alternative is to contact me at [hongxian@comp.nus.edu.sg](mailto:hongxian@comp.nus.edu.sg) or through my mobile phone and I will fix it asap.
 
-Alternative, here are the steps to run my url shortener service on local. (I will try my best to document the steps to reproduce the service...)
+Alternative, here are the steps to run my url shortener service on local.
 
 - ### Client
 1. Ensure that node is installed
